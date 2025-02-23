@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Abra Ka Dabra</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffdde1);
+        background-size: 400% 400%;
+        animation: gradientBG 8s infinite alternate;
+        transition: background 0.5s ease-in-out;
+    }
+    
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+
+    h1 {
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    input {
+        padding: 10px;
+        width: 60%;
+        margin: 10px;
+        border-radius: 8px;
+        border: 2px solid #ff758c;
+        font-size: 16px;
+    }
+
+    button {
+        background: linear-gradient(to right, #ff758c, #ff7eb3);
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+        background: linear-gradient(to right, #ff7eb3, #ff758c);
+        transform: scale(1.1);
+    }
+
+    p {
+        font-size: 20px;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .highlight {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 5px;
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Abra Ka Dabra! ✨</h1>
+<input type="text" id="textInput" placeholder="Type something magical...">
+<button id="btn">Cast the Spell!</button>
+<p>This is a magical paragraph.</p>
+
+<script>
+$(document).ready(function(){
+    $("#btn").click(function(){
+        var newText = $("#textInput").val();
+        
+        // If text is entered, update paragraph
+        if(newText.trim() !== ""){
+            $("p").text(newText);
+        }
+
+        // Toggle highlight and change text color randomly
+        $("p").toggleClass("highlight").css("color", getRandomColor());
+
+        // Change background gradient on click
+        $("body").css("background", getRandomGradient());
+    });
+
+    function getRandomColor() {
+        return "#" + Math.floor(Math.random()*16777215).toString(16);
+    }
+
+    function getRandomGradient() {
+        return `linear-gradient(45deg, ${getRandomColor()}, ${getRandomColor()}, ${getRandomColor()})`;
+    }
+});
+</script>
+
+</body>
+</html>

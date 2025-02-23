@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Average Calculation</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Background Gradient for Body */
+        body {
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Card (Container) with Different Gradient */
+        .card {
+            background: linear-gradient(135deg, #87CEFA, #FFFFFF);
+            color: black;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+        /* Custom Button */
+        .btn-custom {
+            background-color: #0072ff;
+            color: white;
+            font-weight: bold;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #00c6ff;
+        }
+        /* Input Fields */
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #0072ff;
+            background: white;
+            color: black;
+        }
+        .form-control:focus {
+            border: 2px solid #00c6ff;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="text-center mb-4">Result Average Calculation</h3>
+                    <div class="mb-3">
+                        <label class="form-label">Subject 1</label>
+                        <input type="number" class="form-control" id="subject1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subject 2</label>
+                        <input type="number" class="form-control" id="subject2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subject 3</label>
+                        <input type="number" class="form-control" id="subject3">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Result</label>
+                        <input type="text" class="form-control" id="result" readonly>
+                    </div>
+                    <button class="btn btn-custom w-100" onclick="calculateAverage()">Calculate AVG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function calculateAverage() {
+            // Get values from input fields
+            let sub1 = document.getElementById("subject1").value;
+            let sub2 = document.getElementById("subject2").value;
+            let sub3 = document.getElementById("subject3").value;
+
+            // Convert values to numbers
+            let num1 = parseFloat(sub1);
+            let num2 = parseFloat(sub2);
+            let num3 = parseFloat(sub3);
+
+            // Validate inputs
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                alert("Please enter valid numbers in all fields.");
+                return;
+            }
+
+            // Calculate average
+            let avg = (num1 + num2 + num3) / 3;
+
+            // Display result
+            document.getElementById("result").value = avg.toFixed(2);
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
