@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events Demo</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: white;
+            background: #ff4b5c;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-weight: bold;
+            color: #ff4b5c;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: 2px solid #ff4b5c;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #ff9a9e;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 75, 92, 0.5);
+        }
+
+        button {
+            background: #ff4b5c;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff1e3c;
+            box-shadow: 0 5px 10px rgba(255, 75, 92, 0.4);
+        }
+
+        .hover-box {
+            width: 90%;
+            height: 50px;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 15px auto;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hover-box:hover {
+            background: linear-gradient(135deg, #ff1e3c, #ff4b5c);
+            box-shadow: 0 5px 15px rgba(255, 30, 60, 0.5);
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff1e3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>JavaScript Event Handlers</h2>
+
+    <div class="container">
+        <!-- onChange Event -->
+        <label for="dropdown">Select a fruit:</label>
+        <select id="dropdown" onchange="handleChange(event)">
+            <option value="">Select...</option>
+            <option value="apple">Apple</option>
+            <option value="banana">Banana</option>
+            <option value="cherry">Cherry</option>
+        </select>
+
+        <!-- onClick Event -->
+        <button onclick="handleClick()">Click Me</button>
+
+        <!-- onDblClick Event -->
+        <button ondblclick="handleDblClick()">Double Click Me</button>
+
+        <!-- onKeyUp Event -->
+        <label for="keyupInput">Type something (onKeyUp):</label>
+        <input type="text" id="keyupInput" onkeyup="handleKeyUp(event)">
+
+        <!-- onKeyDown Event -->
+        <label for="keydownInput">Type something (onKeyDown):</label>
+        <input type="text" id="keydownInput" onkeydown="handleKeyDown(event)">
+
+        <!-- onFocusIn & onFocusOut Event -->
+        <label for="focusInput">Focus on this input:</label>
+        <input type="text" id="focusInput" onfocusin="handleFocusIn()" onfocusout="handleFocusOut()">
+
+        <!-- onBlur Event -->
+        <label for="blurInput">Click inside and then outside (onBlur):</label>
+        <input type="text" id="blurInput" onblur="handleBlur()">
+
+        <!-- onInput Event -->
+        <label for="inputEvent">Type something (onInput - Fires on every change):</label>
+        <input type="text" id="inputEvent" oninput="handleInput(event)">
+
+        <!-- onMouseOver & onMouseOut Event -->
+        <div class="hover-box" onmouseover="handleMouseOver()" onmouseout="handleMouseOut()">Hover Over Me</div>
+
+        <p id="output"></p>
+    </div>
+
+    <script>
+        function handleChange(event) {
+            document.getElementById("output").innerText = "You selected: " + event.target.value;
+        }
+
+        function handleClick() {
+            document.getElementById("output").innerText = "Button clicked!";
+        }
+
+        function handleDblClick() {
+            document.getElementById("output").innerText = "Button double-clicked!";
+        }
+
+        function handleKeyUp(event) {
+            document.getElementById("output").innerText = "Key released: " + event.key;
+        }
+
+        function handleKeyDown(event) {
+            document.getElementById("output").innerText = "Key pressed: " + event.key;
+        }
+
+        function handleFocusIn() {
+            document.getElementById("output").innerText = "Input field focused!";
+        }
+
+        function handleFocusOut() {
+            document.getElementById("output").innerText = "Input field lost focus!";
+        }
+
+        function handleBlur() {
+            document.getElementById("output").innerText = "Input field blurred!";
+        }
+
+        function handleInput(event) {
+            document.getElementById("output").innerText = "Typing: " + event.target.value;
+        }
+
+        function handleMouseOver() {
+            document.getElementById("output").innerText = "Mouse is over the box!";
+        }
+
+        function handleMouseOut() {
+            document.getElementById("output").innerText = "Mouse left the box!";
+        }
+    </script>
+
+</body>
+</html>
